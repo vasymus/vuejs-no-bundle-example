@@ -13,11 +13,11 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js" integrity="sha512-DJ2+sosWB5FnZAIeCWAHu2gxQ7Gi438oOZLcBQSOrW8gD0s7LIXDv/5RW76B3FcljF40BXnfqNIo6Dhp7dFHJg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        async function importNotVueJsLocalScripts() {
+        async function importNotVueJsLocalScriptsAfterVueMounted() {
             await import('./some-jquery.js');
         }
     </script>
-    <script src="./pages/equipment-form.js"></script>
+    <script type="module" src="./pages/equipment-form.js"></script>
     <style>
         .date-wrapper { position: relative; width: 100px; }
         .date-wrapper .date { width: 100px; box-sizing: border-box; }
@@ -93,8 +93,10 @@
         <button type="submit">Test submit</button>
     </form>
 </div>
-<script>
-    ;initEquipmentFormApp({
+<script type="module">
+    import {initEquipmentFormApp} from './pages/equipment-form.js'
+
+    initEquipmentFormApp({
         select1: 'uuid-2',
         select2: 'uuid-3',
         options1: [
@@ -127,7 +129,7 @@
         ],
         date1: '2022-02-03',
         date2: '',
-    });
+    })
 </script>
 </body>
 </html>

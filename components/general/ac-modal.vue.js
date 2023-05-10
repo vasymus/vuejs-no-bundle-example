@@ -1,3 +1,6 @@
+import useFocusTrap from '../../composables/useFocusTrap.js'
+
+
 export default {
     template: `
         <div>
@@ -37,7 +40,6 @@ export default {
         </div>
     `,
     setup() {
-        const {useFocusTrap} = window.VUE_TEMP_COMPOSABLES;
         const {trapRef} = useFocusTrap();
 
         return {

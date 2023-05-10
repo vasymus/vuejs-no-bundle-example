@@ -1,4 +1,8 @@
-async function initEquipmentFormApp(
+import {getGeneralMixin, defaultInit} from '../mixins/general.js';
+import {TEST_MODAL} from '../modules/modals.js';
+
+
+export function initEquipmentFormApp(
     {
         select1 = '',
         options1 = [],
@@ -8,8 +12,7 @@ async function initEquipmentFormApp(
         date2 = '',
     } = {}
 ) {
-    let {getGeneralMixin, defaultInit} = await import('../mixins/general.js');
-    let appMixin = await getGeneralMixin();
+    let appMixin = getGeneralMixin();
 
     const app = Vue.createApp({
             mixins: [
@@ -88,22 +91,18 @@ async function initEquipmentFormApp(
                     this.showDateUi2 = !this.showDateUi2;
                 },
                 async testOpenModal1() {
-                    const {TEST_MODAL} = await import('../modules/modals.js');
-
                     this.openModal(TEST_MODAL, {
                         hello: 'world',
                         title: 'Some interesting modal',
                     });
                 },
                 async testClosModal1() {
-                    const {TEST_MODAL} = await import('../modules/modals.js');
-
                     this.closeModal(TEST_MODAL);
                 },
             },
         });
 
-    await defaultInit(app);
+    defaultInit(app);
 
     app.mount('#app');
 

@@ -1,7 +1,8 @@
-export async function getGeneralMixin() {
-    const {ModalsTypeComponentMap} = await import('../modules/modals.js');
-    const {getCaseSensitiveInnerHtml} = await import('../utils.js');
+import {ModalsTypeComponentMap} from '../modules/modals.js';
+import {getCaseSensitiveInnerHtml} from '../utils.js';
 
+
+export function getGeneralMixin() {
     return {
         template: getCaseSensitiveInnerHtml(document.getElementById('app')),
         data() {
@@ -33,16 +34,12 @@ export async function getGeneralMixin() {
             },
         },
         async mounted() {
-            await importNotVueJsLocalScripts();
+            await importNotVueJsLocalScriptsAfterVueMounted();
         }
     }
 }
 
-export async function defaultInit(app) {
-    const {importAndRegisterComposables} = await import('../composables/utils.js');
-
-    await importAndRegisterComposables();
-
+export function defaultInit(app) {
     registerGlobalComponents(app);
     registerModalsComponents(app);
 }
