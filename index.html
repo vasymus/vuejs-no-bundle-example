@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+<!--    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js" integrity="sha512-DJ2+sosWB5FnZAIeCWAHu2gxQ7Gi438oOZLcBQSOrW8gD0s7LIXDv/5RW76B3FcljF40BXnfqNIo6Dhp7dFHJg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        async function importNotVueJsLocalScripts() {
+            await import('./some-jquery.js');
+        }
+    </script>
+    <script src="./pages/equipment-form.js"></script>
+    <style>
+        .date-wrapper { position: relative; width: 100px; }
+        .date-wrapper .date { width: 100px; box-sizing: border-box; }
+        .date-wrapper .date-clear { position: absolute; top: 3px; right: 3px; font-size: 20px; color: red; font-weight: bold; cursor: pointer; }
+        .fixed { position: fixed; }
+        .inset-0 { inset: 0; }
+        .overflow-y-auto { overflow-y: auto; }
+    </style>
+</head>
+<body>
+<div id="app">
+    <form action="">
+        <h1 class="hello">Hello World</h1>
+
+        <ac-select-ui v-if="showSelect1" v-model="select1" :options="options1" class="hello1"></ac-select-ui>
+        <div class="my-2">
+            <button class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mr-3" type="button" @click="testChangeSelectValue1">Change select value 1</button>
+
+            <button class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mr-3" type="button" @click="testChangeSelectOptions1">Change select options 1</button>
+
+            <button class="rounded-md bg-amber-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" type="button" @click="testToggleSelectOptions1">Toggle show select 1</button>
+        </div>
+
+        <ac-select-ui v-if="showSelect2" v-model="select2" id="ttt2" :options="options2" class="hello2"></ac-select-ui>
+        <div class="my-2">
+            <button id="tttt3" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mr-3" type="button" @click="testChangeSelectValue2">Change select value 2</button>
+
+            <button class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mr-3" type="button" @click="testChangeSelectOptions2">Change select options 2</button>
+
+            <button class="rounded-md bg-amber-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" type="button" @click="testToggleSelectOptions2">Toggle show select 2</button>
+        </div>
+
+        <ac-date-ui v-if="showDateUi1" v-model="date1"></ac-date-ui>
+        <div class="my-2">
+            <button class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mr-3" type="button" @click="testChangeDate1">Change date 1</button>
+
+            <button class="rounded-md bg-amber-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" type="button" @click="testToggleDate1">Toggle show date1</button>
+        </div>
+
+        <ac-date-ui v-if="showDateUi2" v-model="date2"></ac-date-ui>
+        <div class="my-2">
+            <button class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mr-3" type="button" @click="testChangeDate2">Change date 1</button>
+
+            <button class="rounded-md bg-amber-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" type="button" @click="testToggleDate2">Toggle show date2</button>
+        </div>
+
+        <div class="my-2">
+            <button class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mr-3" type="button" @click="testOpenModal1">Open Modal 1</button>
+
+            <button class="rounded-md bg-amber-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" type="button" @click="testClosModal1">Close Modal 1</button>
+        </div>
+
+        <component
+            v-for="(modal, idx) in modalTypes"
+            :is="getModalComponent(modal.type)"
+            :type="modal.type"
+            :key="`${modal.type}-${idx}`"
+            v-bind="modal.props || {}"
+            @close="closeModal"
+        ></component>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex non quia quidem! Aliquam cumque doloremque esse quia! Ad, cupiditate, dicta dignissimos dolorem eius eveniet, incidunt ipsa mollitia odit quas veritatis!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex non quia quidem! Aliquam cumque doloremque esse quia! Ad, cupiditate, dicta dignissimos dolorem eius eveniet, incidunt ipsa mollitia odit quas veritatis!</p>
+        <div>
+            <input name="dummy" v-model="dummy" placeholder="Dummy input" type="text" />
+        </div>
+
+        <div style="height: 1000px;">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex non quia quidem! Aliquam cumque doloremque esse quia! Ad, cupiditate, dicta dignissimos dolorem eius eveniet, incidunt ipsa mollitia odit quas veritatis!</p>
+        </div>
+        <p>end</p>
+
+        <button type="submit">Test submit</button>
+    </form>
+</div>
+<script>
+    ;initEquipmentFormApp({
+        select1: 'uuid-2',
+        select2: 'uuid-3',
+        options1: [
+            {
+                value: 'uuid-1',
+                label: 'foo',
+            },
+            {
+                value: 'uuid-2',
+                label: 'bar',
+            },
+            {
+                value: 'uuid-3',
+                label: 'baz',
+            }
+        ],
+        options2: [
+            {
+                value: 'uuid-1',
+                label: 'qux',
+            },
+            {
+                value: 'uuid-2',
+                label: 'quux',
+            },
+            {
+                value: 'uuid-3',
+                label: 'corge',
+            }
+        ],
+        date1: '2022-02-03',
+        date2: '',
+    });
+</script>
+</body>
+</html>
