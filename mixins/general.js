@@ -1,10 +1,8 @@
 import {ModalsTypeComponentMap} from '../modules/modals.js';
-import {getCaseSensitiveInnerHtml} from '../utils.js';
 
 
 export function getGeneralMixin() {
     return {
-        template: getCaseSensitiveInnerHtml(document.getElementById('app')),
         data() {
             return {
                 _modalTypes: {},
@@ -32,9 +30,6 @@ export function getGeneralMixin() {
 
                 return ModalsTypeComponentMap[modalType];
             },
-        },
-        async mounted() {
-            await importNotVueJsLocalScriptsAfterVueMounted();
         }
     }
 }
