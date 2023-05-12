@@ -1,7 +1,7 @@
 import {ModalsTypeComponentMap} from '../modules/modals.js';
 
 
-export function getGeneralMixin() {
+export function getRootMixin() {
     return {
         data() {
             return {

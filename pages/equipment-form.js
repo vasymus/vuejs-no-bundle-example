@@ -1,4 +1,4 @@
-import {getGeneralMixin, defaultInit} from '../mixins/general.js';
+import {getRootMixin, defaultInit} from '../mixins/root.js';
 import {TEST_MODAL} from '../modules/modals.js';
 
 
@@ -12,7 +12,7 @@ export function initEquipmentFormApp(
         date2 = '',
     } = {}
 ) {
-    let appMixin = getGeneralMixin();
+    let appMixin = getRootMixin();
 
     const app = Vue.createApp({
             mixins: [
