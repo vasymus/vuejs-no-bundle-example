@@ -1,5 +1,6 @@
 import {getRootMixin, defaultInit} from '../mixins/root.js';
 import {TEST_MODAL} from '../modules/modals.js';
+import {langStore} from "../modules/lang.js";
 
 
 export function initEquipmentFormApp(
@@ -30,7 +31,6 @@ export function initEquipmentFormApp(
                     showDateUi2: true,
                     date1,
                     date2,
-                    dummy: ''
                 }
             },
             methods: {
@@ -100,6 +100,25 @@ export function initEquipmentFormApp(
                     this.closeModal(TEST_MODAL);
                 },
             },
+
+            computed: {
+                dummy: {
+                    get() {
+                        return langStore.state.hello
+                    },
+                    set(v) {
+                        langStore.setLangItems({hello: v})
+                    }
+                },
+                dummy2: {
+                    get() {
+                        return langStore.state.hello2
+                    },
+                    set(v) {
+                        langStore.setLangItems({hello2: v})
+                    }
+                }
+            }
         });
 
     defaultInit(app);

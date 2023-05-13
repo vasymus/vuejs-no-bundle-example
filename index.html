@@ -11,7 +11,11 @@
 <!--    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>-->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js" integrity="sha512-DJ2+sosWB5FnZAIeCWAHu2gxQ7Gi438oOZLcBQSOrW8gD0s7LIXDv/5RW76B3FcljF40BXnfqNIo6Dhp7dFHJg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-demi/0.14.1/index.iife.min.js" integrity="sha512-H4FUVRJghY8FOhF2Hv43CEyPzsotd2Mh7cS1l6qL49VbCPc0ZJvOhoP7uaHomEG4ivOzjGkg715gJC5sHwPpdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pinia/2.0.36/pinia.iife.min.js" integrity="sha512-Cd9aQ3dF5HDM+hNB7oTJdAO2okKvpGDcps7zJpcBr1ba21eUMEcQitlAe7oaZtyo5YkqBhhZaHJ08KsMDmSYww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+
     <script src="./some-jquery.js"></script>
     <script type="module" src="./pages/equipment-form.js"></script>
     <style>
@@ -81,6 +85,10 @@
             <input name="dummy" v-model="dummy" placeholder="Dummy input" type="text" />
         </div>
 
+        <div>
+            <input name="dummy2" v-model="dummy2" placeholder="Dummy 2 input" type="text" />
+        </div>
+
         <div style="height: 1000px;">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex non quia quidem! Aliquam cumque doloremque esse quia! Ad, cupiditate, dicta dignissimos dolorem eius eveniet, incidunt ipsa mollitia odit quas veritatis!</p>
         </div>
@@ -90,7 +98,10 @@
     </form>
 </div>
 <script type="module">
-    import {initEquipmentFormApp} from './pages/equipment-form.js'
+    import {initEquipmentFormApp} from './pages/equipment-form.js';
+    import {langStore} from "./modules/lang.js";
+
+    langStore.setLangItems({hello: 'world'})
 
     initEquipmentFormApp({
         select1: 'uuid-2',
@@ -125,7 +136,7 @@
         ],
         date1: '2022-02-03',
         date2: '',
-    })
+    });
 </script>
 </body>
 </html>
